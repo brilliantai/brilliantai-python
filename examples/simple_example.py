@@ -6,7 +6,7 @@ from llamacloud import LlamaCloud
 api_key = os.environ["LLAMACLOUD_API_KEY"]
 
 # Initialize the client
-client = LlamaCloud(api_key=api_key, base_url="http://localhost:8000")
+client = LlamaCloud(api_key=api_key, base_url="http://api.llamacloud.co")
 
 """
 # Generate an image

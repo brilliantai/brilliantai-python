@@ -18,7 +18,7 @@ You can authenticate using an API key directly or via an environment variable:
 from llamacloud import LlamaCloud
 
 # Option 1: API key directly
-client = LlamaCloud(api_key="your_api_key")
+client = LlamaCloud(api_key="your_api_key", base_url="https://api.llamacloud.co")
 
 # Option 2: Environment variable
 # export LLAMA_CLOUD_API_KEY="your_api_key"
@@ -30,7 +30,7 @@ client = LlamaCloud()
 ```python
 # Generate an image
 image = client.generate_image(
-    model="image-gen-v1",
+    model="glimmer-v1",
     prompt="a beautiful landscape",
     aspect_ratio=LlamaCloud.AspectRatio.LANDSCAPE_16_9,
     image_format=LlamaCloud.ImageFormat.PNG,
@@ -46,9 +46,9 @@ image.save("landscape")  # Saves as "landscape.png"
 ```python
 # Generate a video
 video = client.generate_video(
-    model="video-gen-v1",
+    model="wan-v1",
     prompt="a flowing river",
-    quality="high",
+    quality=LlamaCloud.VideoQuality.HIGH,
     fps=30
 )
 
@@ -60,7 +60,7 @@ video.save("river")  # Saves as "river.mp4"
 
 ### LlamaCloud
 
-#### `LlamaCloud(api_key=None, base_url="https://api.llamacloud.ai", timeout=1200)`
+#### `LlamaCloud(api_key=None, base_url="https://api.llamacloud.co", timeout=1200)`
 
 Creates a new client instance.
 
@@ -83,14 +83,14 @@ Parameters:
 Returns:
 - `Media`: Media object containing the generated image.
 
-#### `generate_video(model, prompt, quality="medium", fps=25)`
+#### `generate_video(model, prompt, quality=LlamaCloud.VideQuality.HIGH, fps=25)`
 
 Generates a video based on the given prompt.
 
 Parameters:
 - `model` (str): The model to use for generation.
 - `prompt` (str): The prompt describing the video.
-- `quality` (str): The quality of the video ("low", "medium", "high").
+- `quality` (LlamaCloud.VideoQuality): The quality of the video (LOW, QUALITY, HIGH).
 - `fps` (int): Frames per second of the video.
 
 Returns:
@@ -121,7 +121,7 @@ MIT
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/brilliantai/llamacloud.git
+git clone https://github.com/brilliantai/llamacloud-python.git
 cd llamacloud
 ```
 
