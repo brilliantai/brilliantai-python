@@ -41,7 +41,7 @@ image = client.generate_image(
 image.save("landscape")  # Saves as "landscape.png"
 ```
 
-![A beautiful landscape](assets/generated_landscape.png)
+![A beautiful landscape](assets/landscape.png)
 ### Generating Videos
 
 ```python
@@ -57,7 +57,7 @@ video = client.generate_video(
 video.save("river")  # Saves as "river.mp4"
 ```
 
-![A flowing river](assets/generated_river.mp4)
+[![Watch the generated video](assets/landscape.png)](assets/river.mp4)
 ## API Reference
 
 ### LlamaCloud
