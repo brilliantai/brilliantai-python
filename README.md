@@ -5,7 +5,7 @@ A Python client for interacting with the LlamaCloud AI APIs for image and video 
 ## Installation
 
 ```bash
-pip install llamacloud
+pip install llamacloud-python
 ```
 
 ## Usage
