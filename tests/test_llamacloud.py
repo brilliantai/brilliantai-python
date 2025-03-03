@@ -28,7 +28,7 @@ class TestLlamaCloud(unittest.TestCase):
         self.client = LlamaCloud(api_key=self.api_key)
 
     def test_init_with_api_key(self):
-        client = LlamaCloud(pi_key="test_key")
+        client = LlamaCloud(api_key="test_key")
         self.assertEqual(client.api_key, "test_key")
         self.assertEqual(client.base_url, "https://api.llamacloud.co")
 
@@ -42,7 +42,7 @@ class TestLlamaCloud(unittest.TestCase):
             with self.assertRaises(ValueError):
                 LlamaCloud()
 
-    @patch("httpx.LlamaCloud")
+    @patch("httpx.Client")
     def test_generate_image(self, mock_client):
         mock_response = MagicMock()
         mock_response.json.return_value = {"image": "base64_image_data"}
@@ -60,7 +60,7 @@ class TestLlamaCloud(unittest.TestCase):
         self.assertEqual(image.base64, "base64_image_data")
         self.assertEqual(image.format, LlamaCloud.ImageFormat.PNG)
 
-    @patch("httpx.LlamaCloud")
+    @patch("httpx.Client")
     def test_generate_video(self, mock_client):
         mock_response = MagicMock()
         mock_response.json.return_value = {"video": "base64_video_data"}

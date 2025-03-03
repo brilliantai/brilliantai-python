@@ -131,7 +131,7 @@ class LlamaCloud:
         }
 
         try:
-            with httpx.LlamaCloud() as client:
+            with httpx.Client() as client:
                 response = client.post(url, json=payload, headers=headers, timeout=self.timeout)
                 response.raise_for_status()
                 data = response.json()

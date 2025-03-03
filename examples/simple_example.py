@@ -1,5 +1,6 @@
-from llamacloud import LlamaCloud
 import os
+
+from llamacloud import LlamaCloud
 
 # Get API key from environment or set it directly
 api_key = os.environ["LLAMACLOUD_API_KEY"]
@@ -31,4 +32,4 @@ video = client.generate_video(
     fps=20
 )
 video.save("generated_river")  # Saves as "generated_river.mp4"
-print(f"Video saved as generated_river.mp4")
+print("Video saved as generated_river.mp4")
