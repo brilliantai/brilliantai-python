@@ -1,4 +1,4 @@
-# LlamaCloud Python LlamaCloud
+# LlamaCloud Python
 
 A Python client for interacting with the LlamaCloud AI APIs for image and video generation.
 
