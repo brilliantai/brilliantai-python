@@ -3,10 +3,10 @@ import os
 from brilliantai import BrilliantAI
 
 # Get API key from environment or set it directly
-api_key = os.environ["LLAMACLOUD_API_KEY"]
+api_key = os.environ["BRILLIANTAI_API_KEY"]
 
 # Initialize the client
-client = BrilliantAI(api_key=api_key, base_url="http://api.llamacloud.co")
+client = BrilliantAI(api_key=api_key, base_url="http://api.brilliantai.co")
 
 """
 # Generate an image
