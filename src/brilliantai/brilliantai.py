@@ -43,8 +43,8 @@ class Media:
         with open(path, "wb") as f:
             f.write(base64.b64decode(self.base64))
 
-# LlamaCloud class to interact with the APIs
-class LlamaCloud:
+# BrilliantAI class to interact with the APIs
+class BrilliantAI:
     # Nested enum for AspectRatio
     class AspectRatio(str, Enum):
         SQUARE = "1:1"
@@ -71,7 +71,7 @@ class LlamaCloud:
         MEDIUM = "medium"
         HIGH = "high"
 
-    def __init__(self, api_key: Optional[str] = None, base_url: str = "https://api.llamacloud.co", timeout: int = 60*20):
+    def __init__(self, api_key: Optional[str] = None, base_url: str = "https://api.brilliantai.co", timeout: int = 60*20):
         """
         Initializes the client with an API key and optional base URL.
         
@@ -79,15 +79,15 @@ class LlamaCloud:
         
         Args:
             api_key (Optional[str]): The API key for authentication. If not provided, fetched from the environment.
-            base_url (str): The base URL of the API server (default: "https://api.llamacloud.co").
+            base_url (str): The base URL of the API server (default: "https://api.brilliantai.co").
         
         Raises:
             ValueError: If no API key is provided and the environment variable is not set.
         """
         if api_key is None:
-            api_key = os.getenv("LLAMA_CLOUD_API_KEY")
+            api_key = os.getenv("BRILLIANTAI_API_KEY")
             if api_key is None:
-                raise ValueError("API key must be provided either as an argument or via the LLAMA_CLOUD_API_KEY environment variable.")
+                raise ValueError("API key must be provided either as an argument or via the BRILLIANTAI_API_KEY environment variable.")
         self.api_key = api_key.strip()
         self.base_url = base_url.rstrip("/")
 
@@ -97,8 +97,8 @@ class LlamaCloud:
         self,
         model: str,
         prompt: str,
-        aspect_ratio: 'LlamaCloud.AspectRatio' = AspectRatio.SQUARE,
-        image_format: 'LlamaCloud.ImageFormat' = ImageFormat.WEBP,
+        aspect_ratio: 'BrilliantAI.AspectRatio' = AspectRatio.SQUARE,
+        image_format: 'BrilliantAI.ImageFormat' = ImageFormat.WEBP,
         seed: Optional[int] = None
     ) -> Media:
         """
@@ -107,8 +107,8 @@ class LlamaCloud:
         Args:
             model (str): The model to use for image generation.
             prompt (str): The prompt describing the image.
-            aspect_ratio (LlamaCloud.AspectRatio): The aspect ratio (default: SQUARE).
-            image_format (LlamaCloud.ImageFormat): The image format (default: WEBP).
+            aspect_ratio (BrilliantAI.AspectRatio): The aspect ratio (default: SQUARE).
+            image_format (BrilliantAI.ImageFormat): The image format (default: WEBP).
             seed (Optional[int]): Random seed for reproducibility (default: None).
         
         Returns:
@@ -148,7 +148,7 @@ class LlamaCloud:
         self,
         model: str,
         prompt: str,
-        quality: 'LlamaCloud.VideoQuality' = VideoQuality.MEDIUM,
+        quality: 'BrilliantAI.VideoQuality' = VideoQuality.MEDIUM,
         fps: int = 20
     ) -> Media:
         """

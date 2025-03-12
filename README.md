@@ -1,11 +1,11 @@
-# LlamaCloud Python
+# BrilliantAI Python
 
-A Python client for interacting with the LlamaCloud AI APIs for image and video generation.
+A Python client for interacting with the BrilliantAI AI APIs for image and video generation.
 
 ## Installation
 
 ```bash
-pip install llamacloud-python
+pip install brilliantai-python
 ```
 
 ## Usage
@@ -15,14 +15,14 @@ pip install llamacloud-python
 You can authenticate using an API key directly or via an environment variable:
 
 ```python
-from llamacloud import LlamaCloud
+from brilliantai import BrilliantAI
 
 # Option 1: API key directly
-client = LlamaCloud(api_key="your_api_key", base_url="https://api.llamacloud.co")
+client = BrilliantAI(api_key="your_api_key", base_url="https://api.brilliantai.co")
 
 # Option 2: Environment variable
-# export LLAMA_CLOUD_API_KEY="your_api_key"
-client = LlamaCloud()
+# export BRILLIANTAI_API_KEY="your_api_key"
+client = BrilliantAI()
 ```
 
 ### Generating Images
@@ -32,8 +32,8 @@ client = LlamaCloud()
 image = client.generate_image(
     model="glimmer-v1",
     prompt="a beautiful landscape",
-    aspect_ratio=LlamaCloud.AspectRatio.LANDSCAPE_16_9,
-    image_format=LlamaCloud.ImageFormat.PNG,
+    aspect_ratio=BrilliantAI.AspectRatio.LANDSCAPE_16_9,
+    image_format=BrilliantAI.ImageFormat.PNG,
     seed=42
 )
 
@@ -49,7 +49,7 @@ image.save("landscape")  # Saves as "landscape.png"
 video = client.generate_video(
     model="wan-v1",
     prompt="a flowing river",
-    quality=LlamaCloud.VideoQuality.HIGH,
+    quality=BrilliantAI.VideoQuality.HIGH,
     fps=30
 )
 
@@ -60,14 +60,14 @@ video.save("river")  # Saves as "river.mp4"
 [![Watch the generated video](assets/landscape.png)](assets/river.mp4)
 ## API Reference
 
-### LlamaCloud
+### BrilliantAI
 
-#### `LlamaCloud(api_key=None, base_url="https://api.llamacloud.co", timeout=1200)`
+#### `BrilliantAI(api_key=None, base_url="https://api.brilliantai.co", timeout=1200)`
 
 Creates a new client instance.
 
 Parameters:
-- `api_key` (Optional[str]): API key for authentication. If not provided, will attempt to use the `LLAMA_CLOUD_API_KEY` environment variable.
+- `api_key` (Optional[str]): API key for authentication. If not provided, will attempt to use the `BRILLIANTAI_API_KEY` environment variable.
 - `base_url` (str): Base URL for the API.
 - `timeout` (int): Request timeout in seconds. Default is 1200 (20 minutes).
 
@@ -78,21 +78,21 @@ Generates an image based on the given prompt.
 Parameters:
 - `model` (str): The model to use for generation.
 - `prompt` (str): The prompt describing the image.
-- `aspect_ratio` (LlamaCloud.AspectRatio): The aspect ratio of the generated image.
-- `image_format` (LlamaCloud.ImageFormat): The format of the generated image.
+- `aspect_ratio` (BrilliantAI.AspectRatio): The aspect ratio of the generated image.
+- `image_format` (BrilliantAI.ImageFormat): The format of the generated image.
 - `seed` (Optional[int]): Random seed for reproducibility.
 
 Returns:
 - `Media`: Media object containing the generated image.
 
-#### `generate_video(model, prompt, quality=LlamaCloud.VideQuality.HIGH, fps=25)`
+#### `generate_video(model, prompt, quality=BrilliantAI.VideQuality.HIGH, fps=25)`
 
 Generates a video based on the given prompt.
 
 Parameters:
 - `model` (str): The model to use for generation.
 - `prompt` (str): The prompt describing the video.
-- `quality` (LlamaCloud.VideoQuality): The quality of the video (LOW, QUALITY, HIGH).
+- `quality` (BrilliantAI.VideoQuality): The quality of the video (LOW, QUALITY, HIGH).
 - `fps` (int): Frames per second of the video.
 
 Returns:
@@ -123,8 +123,8 @@ MIT
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/brilliantai/llamacloud-python.git
-cd llamacloud
+git clone https://github.com/brilliantai/brilliantai-python.git
+cd BrilliantAI
 ```
 
 2. Install development dependencies:
@@ -149,7 +149,7 @@ Or run the commands individually:
 ruff check .
 
 # Run tests with coverage
-pytest --cov=llamacloud
+pytest --cov=BrilliantAI
 ```
 
 ### CI/CD

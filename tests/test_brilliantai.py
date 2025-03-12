@@ -2,7 +2,7 @@ import os
 import unittest
 from unittest.mock import MagicMock, patch
 
-from llamacloud import LlamaCloud, Media
+from brilliantai import BrilliantAI, Media
 
 
 class TestMedia(unittest.TestCase):
@@ -22,25 +22,25 @@ class TestMedia(unittest.TestCase):
         mock_open().write.assert_called_once_with(b"decoded_data")
 
 
-class TestLlamaCloud(unittest.TestCase):
+class TestBrilliantAI(unittest.TestCase):
     def setUp(self):
         self.api_key = "test_api_key"
-        self.client = LlamaCloud(api_key=self.api_key)
+        self.client = BrilliantAI(api_key=self.api_key)
 
     def test_init_with_api_key(self):
-        client = LlamaCloud(api_key="test_key")
+        client = BrilliantAI(api_key="test_key")
         self.assertEqual(client.api_key, "test_key")
-        self.assertEqual(client.base_url, "https://api.llamacloud.co")
+        self.assertEqual(client.base_url, "https://api.brilliantai.co")
 
-    @patch.dict(os.environ, {"LLAMA_CLOUD_API_KEY": "env_test_key"})
+    @patch.dict(os.environ, {"BRILLIANTAI_API_KEY": "env_test_key"})
     def test_init_with_env_var(self):
-        client = LlamaCloud()
+        client = BrilliantAI()
         self.assertEqual(client.api_key, "env_test_key")
 
     def test_init_without_api_key(self):
         with patch.dict(os.environ, clear=True):
             with self.assertRaises(ValueError):
-                LlamaCloud()
+                BrilliantAI()
 
     @patch("httpx.Client")
     def test_generate_image(self, mock_client):
@@ -51,14 +51,14 @@ class TestLlamaCloud(unittest.TestCase):
         image = self.client.generate_image(
             model="test_model",
             prompt="test prompt",
-            aspect_ratio=LlamaCloud.AspectRatio.SQUARE,
-            image_format=LlamaCloud.ImageFormat.PNG,
+            aspect_ratio=BrilliantAI.AspectRatio.SQUARE,
+            image_format=BrilliantAI.ImageFormat.PNG,
             seed=42
         )
 
         self.assertIsInstance(image, Media)
         self.assertEqual(image.base64, "base64_image_data")
-        self.assertEqual(image.format, LlamaCloud.ImageFormat.PNG)
+        self.assertEqual(image.format, BrilliantAI.ImageFormat.PNG)
 
     @patch("httpx.Client")
     def test_generate_video(self, mock_client):

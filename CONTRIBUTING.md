@@ -1,6 +1,6 @@
-# Contributing to LlamaCloud Python Client
+# Contributing to BrilliantAI Python Client
 
-Thank you for your interest in contributing to the LlamaCloud Python client! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to the BrilliantAI Python client! This document provides guidelines and instructions for contributing.
 
 ## Code of Conduct
 
